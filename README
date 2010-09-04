@@ -1,6 +1,6 @@
 NotifoMail is a Python script to process piped e-mails
-and post a Notifo alert, for use with e-mail forwarders such
-as Exim that allow e-mail to be piped to a script.
+and post a Notifo alert, for use with e-mail servers such
+as Exim that allow e-mail to be forwarded to a shell script.
 
 This script requires the following Python modules:
 

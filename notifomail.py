@@ -2,13 +2,14 @@
 
 # NotifoMail:
 # A Python script to process piped e-mails and post a Notifo alert,
-# for use with e-mail forwarders such as Exim.
+# for use with e-mail servers such as Exim that allow e-mail
+# to be forwarded to a shell script.
 #
 # Requires the following Python modules:
-#   Notifo.py
-#       <http://github.com/mrtazz/notifo.py>
-#   Python 2.6 or SimpleJSON
-#       <http://pypi.python.org/pypi/simplejson/>
+#	Notifo.py
+#		<http://github.com/mrtazz/notifo.py>
+#	Python 2.6 or SimpleJSON
+#		<http://pypi.python.org/pypi/simplejson/>
 #
 # Released under the BSD License; see file LICENSE for information.
 #
@@ -34,15 +35,15 @@ if not config.has_option('Login', 'user') or \
    config.get('Login', 'user') == '' or \
    not config.has_option('Login', 'secret') or \
    config.get('Login', 'secret') == '':
-    sys.stderr.write('No username or API secret specified!\n')
-    sys.exit(1)
+	sys.stderr.write('No username or API secret specified!\n')
+	sys.exit(1)
 	
 if not config.has_option('Format', 'title'):
-    config.set('Format', 'title', 'New E-mail')
+	config.set('Format', 'title', 'New E-mail')
 if not config.has_option('Format', 'label'):
-    config.set('Format', 'label', 'NotifoMail')
+	config.set('Format', 'label', 'NotifoMail')
 if not config.has_option('Format', 'lines'):
-    config.set('Format', 'lines', '5')
+	config.set('Format', 'lines', '5')
 
 # Read the e-mail, find the Subject and From lines,
 # and read the first several lines of the body.
@@ -72,4 +73,4 @@ if body != '':
 if subject != '' and sender != '':
 	notifo = Notifo(config.get('Login','user'), config.get('Login','secret'))
 	notifo.send_notification(label=config.get('Format','label'), \
-                             title=config.get('Format','title'), msg=msg)
+	                         title=config.get('Format','title'), msg=msg)
