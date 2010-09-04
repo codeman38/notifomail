@@ -19,13 +19,13 @@
 # 3 September 2010
 
 
-import sys
-import ConfigParser
+import sys, os, ConfigParser
 from notifo import Notifo
 
 # Read the config file.
 config = ConfigParser.ConfigParser()
-config.read('notifomail.cfg')
+config.read(['notifomail.cfg', \
+            os.path.abspath(os.path.dirname(sys.argv[0]))+'/notifomail.cfg'])
 
 # Check to make sure we've got a username and key.
 # If we don't have one, quit.
@@ -35,7 +35,7 @@ if not config.has_option('Login', 'user') or \
    not config.has_option('Login', 'secret') or \
    config.get('Login', 'secret') == '':
     sys.stderr.write('No username or API secret specified!\n')
-    exit(1)
+    sys.exit(1)
 	
 if not config.has_option('Format', 'title'):
     config.set('Format', 'title', 'New E-mail')
