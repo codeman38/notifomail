@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/env python
 
 # NotifoMail:
 # A Python script to process piped e-mails and post a Notifo alert,
